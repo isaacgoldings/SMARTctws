@@ -613,7 +613,10 @@ def build_map_figure_from_df(df):
     df2 = df.copy()
 
     # Ensures works with isoformat
-    df2['date'] = pd.to_datetime(df2['date'])
+    # Rows can have mixed precision (some with fractional seconds / trailing 'Z',
+    # some without), so parse as ISO8601 and normalize to UTC instead of letting
+    # pandas infer a single format from the first value.
+    df2['date'] = pd.to_datetime(df2['date'], format='ISO8601', utc=True)
 
     # center map
     # NOTE to future editors

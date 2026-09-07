@@ -34,9 +34,9 @@ def do_webscrape() -> pd.DataFrame:
             "latitude": item["la"],
             "longitude": item["ln"],
             "date": item["d"]["date"],
-            "collarId": item["d"]["collarId"],
+            "collarId": item["d"].get("collarId"),
             "serialId": item["d"]["serialId"],
-            "positionId": item["d"]["positionId"]
+            "positionId": item["d"].get("positionId")
         }
         records.append(record)
 

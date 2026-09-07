@@ -47,10 +47,10 @@ class CWFACDB(BaseDB):
             CREATE TABLE tObservations (
                 serialId TEXT NOT NULL REFERENCES tAnimal(serialId),
                 date TIMESTAMP,
-                collarId TEXT NOT NULL,
+                collarId TEXT,
                 latitude FLOAT, -- chat recommended either geography or geometry(Point, 4326), or as DECIMAL(9,6) but keeping float for now
                 longitude FLOAT,
-                positionId TEXT NOT NULL,
+                positionId TEXT,
                 PRIMARY KEY (serialId, date)
             )
             ;"""
